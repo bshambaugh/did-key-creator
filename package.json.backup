@@ -1,0 +1,19 @@
+{
+  "name": "key-did-provider-secp256r1",
+  "version": "1.0.0",
+  "description": "Still work in progress.",
+  "main": "prettier.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "multibase": "^4.0.4",
+    "multicodec": "^3.0.1",
+    "uint8arrays": "^2.1.4"
+  }
+}

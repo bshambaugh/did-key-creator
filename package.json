@@ -1,0 +1,52 @@
+{
+  "version": "0.1.0",
+  "license": "(Apache-2.0 OR MIT)",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint src test",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "name": "key-did-provider-secp256r1",
+  "author": "Joel Thorstensson an Brent Shambaugh",
+  "module": "dist/key-did-provider-secp256r1.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/key-did-provider-secp256r1.cjs.production.min.js",
+      "limit": "170 KB"
+    },
+    {
+      "path": "dist/key-did-provider-secp256r1.esm.js",
+      "limit": "170 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.10.1",
+    "@types/elliptic": "^6.4.12",
+    "eslint": "^7.21.0",
+    "eslint-config-3box": "^0.2.0",
+    "husky": "^4.3.8",
+    "prettier": "^2.2.1",
+    "size-limit": "^4.10.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "multibase": "^4.0.4",
+    "multicodec": "^3.0.1",
+    "uint8arrays": "^2.1.4"
+  }
+}
