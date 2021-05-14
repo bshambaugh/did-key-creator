@@ -32,6 +32,7 @@ export function pubKeyHexToUint8Array(publicKeyHex: string) {
    return publicKey_u8a;
 }
 
+// create a compressed public key in hex from a raw public key in hex
 export function compresedKeyInHex(publicKeyHex: string) {
   const xHex = publicKeyHex.slice(0,publicKeyHex.length/2);
   const yHex = publicKeyHex.slice(publicKeyHex.length/2,publicKeyHex.length);
