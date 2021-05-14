@@ -15,7 +15,7 @@ export function encodeDID(publicKey: Uint8Array) {
           return `did:key:${bufAsString}`	  
 }
 
-// write a separate test for this function...
+// compress a public key with points x,y expressed as UintArrays
 // source: https://stackoverflow.com/questions/17171542/algorithm-for-elliptic-curve-point-compression
 export function ECPointCompress( x: Uint8Array, y: Uint8Array )
 {
@@ -25,11 +25,6 @@ export function ECPointCompress( x: Uint8Array, y: Uint8Array )
     out.set( x, 1 );
 
     return out;
-}
-
-export function pubKeyHexToUint8Array(publicKeyHex: string) {
-   const publicKey_u8a = u8a.fromString(publicKeyHex,'base16');
-   return publicKey_u8a;
 }
 
 // create a compressed public key in hex from a raw public key in hex
