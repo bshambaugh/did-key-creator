@@ -1,2 +1,2 @@
-import * as secp256r1 from './secp256r1'
+import * as encodeDIDkey from './encodeDIDkey'
 import * as utils from './utils'
