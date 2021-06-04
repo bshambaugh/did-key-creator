@@ -32,6 +32,11 @@ export function uncompressedKeyInHexfromRaw(publicKeyHex: string) {
    return '04'+publicKeyHex;
 }
 
+// create a raw public key from a uncompressed public key in hex
+export function rawKeyInHexfromUncompressed(publicKeyHex: string) {
+   return publicKeyHex.slice(2);
+}
+
 export function pubKeyHexToUint8Array(publicKeyHex: string) {
   if(publicKeyHex == null) {
    throw new TypeError('input cannot be null or undefined.');
