@@ -28,6 +28,57 @@ did:key:zruuPojWkzGPb8sVc42f2YxcTXKUTpAUbdrzVovaTBmGGNyK6cGFaA4Kp7SSLKecrxYz8Sc9
 did:key:zruuPojWkzGPb8sVc42f2YxcTXKUTpAUbdrzVovaTBmGGNyK6cGFaA4Kp7SSLKecrxYz8Sc9d77Rss7rayYt1oFCaNJ
 ```
 
+### Another code example for P-256 key
+```
+import * as name from '../did-key-creator/lib/encodeDIDkey.js'
+import * as utils from '../did-key-creator/lib/utils.js'
+import u8a from 'uint8arrays'
+import ec from 'elliptic'
+var EC = ec.ec;
+
+const  ecurve = new EC('p256');
+const  key = ecurve.genKeyPair();
+const  pubPoint = key.getPublic('hex');
+
+const rawKey = utils.rawKeyInHexfromUncompressed(pubPoint);
+
+const publicKey2 = u8a.fromString(rawKey,'base16');
+console.log(name.encodeDIDfromHexString(multicodecName,rawKey));
+console.log(name.encodeDIDfromBytes(multicodecName,publicKey2));
+```
+
+### output
+```
+did:key:zruqvMb8L2VWcghzg2Bt9QYwHnDfwixx9gKKU6Sy4pizM24cB98kFKefB8S7jYNvzyUFT5aRF1q7zEuMwR2RdszUDDc
+did:key:zruqvMb8L2VWcghzg2Bt9QYwHnDfwixx9gKKU6Sy4pizM24cB98kFKefB8S7jYNvzyUFT5aRF1q7zEuMwR2RdszUDDc
+```
+
+### Compressed Key code example for P-256 key
+```
+import * as name from '../did-key-creator/lib/encodeDIDkey.js'
+import * as utils from '../did-key-creator/lib/utils.js'
+import u8a from 'uint8arrays'
+import ec from 'elliptic'
+var EC = ec.ec;
+
+const  ecurve = new EC('p256');
+const  key = ecurve.genKeyPair();
+const  pubPoint = key.getPublic('hex');
+
+const rawKey = utils.rawKeyInHexfromUncompressed(pubPoint);
+const compressedKey = utils.compressedKeyInHexfromRaw(rawKey);
+
+const publicKey2 = u8a.fromString(compressedKey,'base16');
+console.log(name.encodeDIDfromHexString(multicodecName,compressedKey));
+console.log(name.encodeDIDfromBytes(multicodecName,publicKey2));
+```
+
+### output
+```
+did:key:zDnaeqYWNxcFqy5DcJm91BMTeWv5hjs1VL5medk9n8dDUC67T
+did:key:zDnaeqYWNxcFqy5DcJm91BMTeWv5hjs1VL5medk9n8dDUC67T
+```
+
 ## License
 
 Apache-2.0 OR MIT
