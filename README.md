@@ -79,6 +79,30 @@ did:key:zDnaeqYWNxcFqy5DcJm91BMTeWv5hjs1VL5medk9n8dDUC67T
 did:key:zDnaeqYWNxcFqy5DcJm91BMTeWv5hjs1VL5medk9n8dDUC67T
 ```
 
+### Uncompressed Key code example for P-256 key
+```
+import * as name from '../did-key-creator/lib/encodeDIDkey.js'
+import * as utils from '../did-key-creator/lib/utils.js'
+import u8a from 'uint8arrays'
+import ec from 'elliptic'
+var EC = ec.ec;
+
+const  ecurve = new EC('p256');
+const  key = ecurve.genKeyPair();
+const  pubPoint = key.getPublic('hex');
+
+const publicKey3 = u8a.fromString(pubPoint,'base16');
+console.log(name.encodeDIDfromHexString(multicodecName,pubPoint));
+console.log(name.encodeDIDfromBytes(multicodecName,publicKey3));
+
+```
+
+### output
+```
+did:key:z4oJ8bWfFMefRfFuNtDtu69bQyvaCpYh62thpGA9TWNZs614qDUfCdZ2KuZMEAFKXGACSo3Ws9FLZwscDGtLwThKFev44
+did:key:z4oJ8bWfFMefRfFuNtDtu69bQyvaCpYh62thpGA9TWNZs614qDUfCdZ2KuZMEAFKXGACSo3Ws9FLZwscDGtLwThKFev44
+```
+
 ## License
 
 Apache-2.0 OR MIT
