@@ -33,6 +33,54 @@ did:key:zDnaeqYWNxcFqy5DcJm91BMTeWv5hjs1VL5medk9n8dDUC67T
 did:key:zDnaeqYWNxcFqy5DcJm91BMTeWv5hjs1VL5medk9n8dDUC67T
 ```
 
+### Compressed 49 Byte Key code example for P-384 key (using elliptic npm module):
+```
+import * as name from '../did-key-creator/lib/encodeDIDkey.js'
+import * as utils from '../did-key-creator/lib/utils.js'
+import u8a from 'uint8arrays'
+import ec from 'elliptic'
+var EC = ec.ec;
+
+const multicodecName = 'p384-pub';
+const  ecurve = new EC('p384');
+const  key = ecurve.genKeyPair();
+const  pubPoint = key.getPublic('hex');
+
+const rawKey = utils.rawKeyInHexfromUncompressed(pubPoint);
+const compressedKey = utils.compressedKeyInHexfromRaw(rawKey);
+
+console.log(name.encodeDIDfromHexString(multicodecName,compressedKey));
+```
+
+### output
+```
+did:key:z82Lkz6GT5oNPzQowVWaYysnFPT1NAMsXayELmNjme3FhRErkTkij9ywuYWukxcLfNdW6Cw
+```
+
+### Compressed 67 Byte Key code example for P-521 key (using elliptic npm module):
+```
+import * as name from '../did-key-creator/lib/encodeDIDkey.js'
+import * as utils from '../did-key-creator/lib/utils.js'
+import u8a from 'uint8arrays'
+import ec from 'elliptic'
+var EC = ec.ec;
+
+const multicodecName = 'p521-pub';
+const  ecurve = new EC('p521');
+const  key = ecurve.genKeyPair();
+const  pubPoint = key.getPublic('hex');
+
+const rawKey = utils.rawKeyInHexfromUncompressed(pubPoint);
+const compressedKey = utils.compressedKeyInHexfromRaw(rawKey);
+
+console.log(name.encodeDIDfromHexString(multicodecName,compressedKey));
+```
+
+### output
+```
+did:key:z2J9gaYmUxgiF1VDutBWwC4KVdpKfjnRkyV3t4kysx49eHz1wkYh1KHBPqbNdVH5GTgY2KLXtJPYTwFDkhQxuTWxK3K5HSKu
+```
+
 ## Other Possible Uses:
 
 ### Raw 64 Byte Public Key code Example for P-256 Key:
