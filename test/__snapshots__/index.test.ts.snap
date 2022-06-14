@@ -1,5 +1,122 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`did-key-creator-p256 ECPointCompress 1`] = `
+Uint8Array [
+  3,
+  249,
+  195,
+  111,
+  137,
+  100,
+  98,
+  51,
+  120,
+  189,
+  192,
+  104,
+  212,
+  188,
+  224,
+  126,
+  209,
+  124,
+  143,
+  164,
+  134,
+  249,
+  172,
+  12,
+  38,
+  19,
+  202,
+  60,
+  140,
+  48,
+  109,
+  123,
+  182,
+]
+`;
+
+exports[`did-key-creator-p256 compressedKeyInHexfromRaw 1`] = `"03f9c36f8964623378bdc068d4bce07ed17c8fa486f9ac0c2613ca3c8c306d7bb6"`;
+
+exports[`did-key-creator-p256 didKeyIDtoPubKeyHex 1`] = `"f9c36f8964623378bdc068d4bce07ed17c8fa486f9ac0c2613ca3c8c306d7bb61cd36717b8ac5e4fea8ad23dc8d0783c2318ee4ad7a80db6e0026ad0b072a24f"`;
+
+exports[`did-key-creator-p256 didKeyURLtoPubKeyHex 1`] = `"f9c36f8964623378bdc068d4bce07ed17c8fa486f9ac0c2613ca3c8c306d7bb61cd36717b8ac5e4fea8ad23dc8d0783c2318ee4ad7a80db6e0026ad0b072a24f"`;
+
 exports[`did-key-creator-p256 encodeDIDfromBytes 1`] = `"did:key:zruuPojWkzGPb8sVc42f2YxcTXKUTpAUbdrzVovaTBmGGNyK6cGFaA4Kp7SSLKecrxYz8Sc9d77Rss7rayYt1oFCaNJ"`;
 
 exports[`did-key-creator-p256 encodeDIDfromHexString 1`] = `"did:key:zruuPojWkzGPb8sVc42f2YxcTXKUTpAUbdrzVovaTBmGGNyK6cGFaA4Kp7SSLKecrxYz8Sc9d77Rss7rayYt1oFCaNJ"`;
+
+exports[`did-key-creator-p256 pubKeyHexToUint8Array 1`] = `
+Uint8Array [
+  249,
+  195,
+  111,
+  137,
+  100,
+  98,
+  51,
+  120,
+  189,
+  192,
+  104,
+  212,
+  188,
+  224,
+  126,
+  209,
+  124,
+  143,
+  164,
+  134,
+  249,
+  172,
+  12,
+  38,
+  19,
+  202,
+  60,
+  140,
+  48,
+  109,
+  123,
+  182,
+  28,
+  211,
+  103,
+  23,
+  184,
+  172,
+  94,
+  79,
+  234,
+  138,
+  210,
+  61,
+  200,
+  208,
+  120,
+  60,
+  35,
+  24,
+  238,
+  74,
+  215,
+  168,
+  13,
+  182,
+  224,
+  2,
+  106,
+  208,
+  176,
+  114,
+  162,
+  79,
+]
+`;
+
+exports[`did-key-creator-p256 rawKeyInHexfromUncompressed 1`] = `"f9c36f8964623378bdc068d4bce07ed17c8fa486f9ac0c2613ca3c8c306d7bb61cd36717b8ac5e4fea8ad23dc8d0783c2318ee4ad7a80db6e0026ad0b072a24f"`;
+
+exports[`did-key-creator-p256 uncompressedKeyInHexfromRaw 1`] = `"04f9c36f8964623378bdc068d4bce07ed17c8fa486f9ac0c2613ca3c8c306d7bb61cd36717b8ac5e4fea8ad23dc8d0783c2318ee4ad7a80db6e0026ad0b072a24f"`;
