@@ -11,24 +11,24 @@
     "node": ">=12"
   },
   "scripts": {
+    "test": "jest --silent",
+    "build": "tsc -p tsconfig.json",
     "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint src test",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run clean",
+    "lint": "./node_modules/.bin/eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "clean": "rm -rf ./lib"
   },
-  "name": "key-did-provider-secp256r1",
-  "author": "Joel Thorstensson an Brent Shambaugh",
-  "module": "dist/key-did-provider-secp256r1.esm.js",
+  "name": "did-key-creator",
+  "author": "Brent Shambaugh",
+  "module": "dist/did-key-creator.esm.js",
   "size-limit": [
     {
-      "path": "dist/key-did-provider-secp256r1.cjs.production.min.js",
+      "path": "dist/did-key-creator.cjs.production.min.js",
       "limit": "170 KB"
     },
     {
-      "path": "dist/key-did-provider-secp256r1.esm.js",
+      "path": "dist/did-key-creator.esm.js",
       "limit": "170 KB"
     }
   ],
@@ -47,6 +47,7 @@
   "dependencies": {
     "multibase": "^4.0.4",
     "multicodec": "^3.0.1",
+    "ts-jest": "^28.0.5",
     "uint8arrays": "^2.1.4"
   }
 }
