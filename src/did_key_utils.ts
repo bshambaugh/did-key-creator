@@ -4,7 +4,7 @@ import { base58btc } from 'multiformats/bases/base58'
 
 // compress a public key with points x,y expressed as UintArrays
 // source: https://stackoverflow.com/questions/17171542/algorithm-for-elliptic-curve-point-compression
-export function ECPointCompress( x: Uint8Array, y: Uint8Array )
+export function ECPointCompress( x: Uint8Array, y: Uint8Array ) : Uint8Array
 {
     const out = new Uint8Array( x.length + 1 );
 
@@ -15,7 +15,7 @@ export function ECPointCompress( x: Uint8Array, y: Uint8Array )
 }
 
 // create a compressed public key in hex from a raw public key in hex
-export function compressedKeyInHexfromRaw(publicKeyHex: string) {
+export function compressedKeyInHexfromRaw(publicKeyHex: string): string {
   const xHex = publicKeyHex.slice(0,publicKeyHex.length/2);
   const yHex = publicKeyHex.slice(publicKeyHex.length/2,publicKeyHex.length);
 
@@ -28,16 +28,16 @@ export function compressedKeyInHexfromRaw(publicKeyHex: string) {
 }
 
 // create an uncompressed public key from a raw public key in hex
-export function uncompressedKeyInHexfromRaw(publicKeyHex: string) {
+export function uncompressedKeyInHexfromRaw(publicKeyHex: string): string {
    return '04'+publicKeyHex;
 }
 
 // create a raw public key from a uncompressed public key in hex
-export function rawKeyInHexfromUncompressed(publicKeyHex: string) {
+export function rawKeyInHexfromUncompressed(publicKeyHex: string): string {
    return publicKeyHex.slice(2);
 }
 
-export function pubKeyHexToUint8Array(publicKeyHex: string) {
+export function pubKeyHexToUint8Array(publicKeyHex: string): Uint8Array {
   if(publicKeyHex == null) {
    throw new TypeError('input cannot be null or undefined.');
   }
@@ -48,13 +48,13 @@ export function pubKeyHexToUint8Array(publicKeyHex: string) {
     }
 }
 
-export function didKeyIDtoPubKeyHex(didKeyID : string) {
+export function didKeyIDtoPubKeyHex(didKeyID : string): string {
    const buf = base58btc.decode(didKeyID);
    const bufwoPrefix = multicodec.rmPrefix(buf);
    return u8a.toString(bufwoPrefix,'base16')
 }
 
-export function didKeyURLtoPubKeyHex(didKeyURL : string) {
+export function didKeyURLtoPubKeyHex(didKeyURL : string): string {
     const didKeyID = didKeyURL.split(':')[2];
     return didKeyIDtoPubKeyHex(didKeyID);
 }
