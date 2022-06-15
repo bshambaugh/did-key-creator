@@ -1,6 +1,6 @@
 import * as u8a from 'uint8arrays'
 import multicodec from 'multicodec'
-import  multibase from'multibase'
+import { base58btc } from 'multiformats/bases/base58'
 import { CodecName } from 'multicodec/src/generated-types';
 
 
@@ -12,8 +12,7 @@ export function encodeDIDfromHexString(multicodecName: CodecName,publicKeyHex: s
 
 
 export function encodeDIDfromBytes(multicodecName: CodecName, publicKey: Uint8Array) {
-          const publicKeywPrefix = multicodec.addPrefix(multicodecName,publicKey)
-          const buf = multibase.encode('base58btc',publicKeywPrefix)
-          const bufAsString = u8a.toString(buf)
+      const publicKeywPrefix = multicodec.addPrefix(multicodecName,publicKey)
+      const bufAsString = base58btc.encode(publicKeywPrefix);
 	  return `did:key:${bufAsString}`	  
 }

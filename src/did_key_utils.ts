@@ -1,6 +1,6 @@
 import * as u8a from 'uint8arrays'
 import multicodec from 'multicodec'
-import  multibase from'multibase'
+import { base58btc } from 'multiformats/bases/base58'
 
 // compress a public key with points x,y expressed as UintArrays
 // source: https://stackoverflow.com/questions/17171542/algorithm-for-elliptic-curve-point-compression
@@ -49,7 +49,7 @@ export function pubKeyHexToUint8Array(publicKeyHex: string) {
 }
 
 export function didKeyIDtoPubKeyHex(didKeyID : string) {
-   const buf = multibase.decode(didKeyID);
+   const buf = base58btc.decode(didKeyID);
    const bufwoPrefix = multicodec.rmPrefix(buf);
    return u8a.toString(bufwoPrefix,'base16')
 }
