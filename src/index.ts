@@ -1,4 +1,5 @@
-import { compressedKeyInHexfromRaw, 
+import { ECPointCompress,
+  compressedKeyInHexfromRaw, 
   uncompressedKeyInHexfromRaw, 
   rawKeyInHexfromUncompressed, 
   pubKeyHexToUint8Array, 
@@ -7,7 +8,8 @@ import { compressedKeyInHexfromRaw,
 
 import { encodeDIDfromHexString, encodeDIDfromBytes } from './encodeDIDkey'
 
-export { compressedKeyInHexfromRaw, 
+export { ECPointCompress,
+         compressedKeyInHexfromRaw, 
          uncompressedKeyInHexfromRaw, 
          rawKeyInHexfromUncompressed, 
          pubKeyHexToUint8Array, 
