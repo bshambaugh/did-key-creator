@@ -7,24 +7,27 @@ and https://w3c-ccg.github.io/did-method-key/ .
 
 ## Standard Use: 
 
+### Note:
+One way to get import in the code to work is to add "type":"module" in package.json .
+
 ### Compressed 33 Byte Key code example for P-256 key (using elliptic npm module):
 ```
-import * as name from '../did-key-creator/lib/encodeDIDkey.js'
-import * as utils from '../did-key-creator/lib/utils.js'
-import u8a from 'uint8arrays'
-import ec from 'elliptic'
-var EC = ec.ec;
+import { rawKeyInHexfromUncompressed, compressedKeyInHexfromRaw, encodeDIDfromHexString, encodeDIDfromBytes } from 'did-key-creator'
 
-const  ecurve = new EC('p256');
+import { fromString } from 'uint8arrays/from-string'
+import elliptic from 'elliptic'
+
+const ecurve = new elliptic.ec('p256')
 const  key = ecurve.genKeyPair();
 const  pubPoint = key.getPublic('hex');
+const multicodecName = 'p256-pub';
 
-const rawKey = utils.rawKeyInHexfromUncompressed(pubPoint);
-const compressedKey = utils.compressedKeyInHexfromRaw(rawKey);
+const rawKey = rawKeyInHexfromUncompressed(pubPoint);
+const compressedKey = compressedKeyInHexfromRaw(rawKey);
 
-const publicKey2 = u8a.fromString(compressedKey,'base16');
-console.log(name.encodeDIDfromHexString(multicodecName,compressedKey));
-console.log(name.encodeDIDfromBytes(multicodecName,publicKey2));
+const publicKey2 = fromString(compressedKey,'base16');
+console.log(encodeDIDfromHexString(multicodecName,compressedKey));
+console.log(encodeDIDfromBytes(multicodecName,publicKey2));
 ```
 
 ### output
@@ -35,21 +38,18 @@ did:key:zDnaeqYWNxcFqy5DcJm91BMTeWv5hjs1VL5medk9n8dDUC67T
 
 ### Compressed 49 Byte Key code example for P-384 key (using elliptic npm module):
 ```
-import * as name from '../did-key-creator/lib/encodeDIDkey.js'
-import * as utils from '../did-key-creator/lib/utils.js'
-import u8a from 'uint8arrays'
-import ec from 'elliptic'
-var EC = ec.ec;
+import { rawKeyInHexfromUncompressed, compressedKeyInHexfromRaw, encodeDIDfromHexString, encodeDIDfromBytes } from 'did-key-creator'
+import elliptic from 'elliptic'
 
-const multicodecName = 'p384-pub';
-const  ecurve = new EC('p384');
+const ecurve = new elliptic.ec('p384')
 const  key = ecurve.genKeyPair();
 const  pubPoint = key.getPublic('hex');
+const multicodecName = 'p384-pub';
 
-const rawKey = utils.rawKeyInHexfromUncompressed(pubPoint);
-const compressedKey = utils.compressedKeyInHexfromRaw(rawKey);
+const rawKey = rawKeyInHexfromUncompressed(pubPoint);
+const compressedKey = compressedKeyInHexfromRaw(rawKey);
 
-console.log(name.encodeDIDfromHexString(multicodecName,compressedKey));
+console.log(encodeDIDfromHexString(multicodecName,compressedKey));
 ```
 
 ### output
@@ -59,21 +59,20 @@ did:key:z82Lkz6GT5oNPzQowVWaYysnFPT1NAMsXayELmNjme3FhRErkTkij9ywuYWukxcLfNdW6Cw
 
 ### Compressed 67 Byte Key code example for P-521 key (using elliptic npm module):
 ```
-import * as name from '../did-key-creator/lib/encodeDIDkey.js'
-import * as utils from '../did-key-creator/lib/utils.js'
-import u8a from 'uint8arrays'
-import ec from 'elliptic'
-var EC = ec.ec;
+import { rawKeyInHexfromUncompressed, compressedKeyInHexfromRaw, encodeDIDfromHexString, encodeDIDfromBytes } from 'did-key-creator'
 
-const multicodecName = 'p521-pub';
-const  ecurve = new EC('p521');
+import { fromString } from 'uint8arrays/from-string'
+import elliptic from 'elliptic'
+
+const ecurve = new elliptic.ec('p521')
 const  key = ecurve.genKeyPair();
 const  pubPoint = key.getPublic('hex');
+const multicodecName = 'p521-pub';
 
-const rawKey = utils.rawKeyInHexfromUncompressed(pubPoint);
-const compressedKey = utils.compressedKeyInHexfromRaw(rawKey);
+const rawKey = rawKeyInHexfromUncompressed(pubPoint);
+const compressedKey = compressedKeyInHexfromRaw(rawKey);
 
-console.log(name.encodeDIDfromHexString(multicodecName,compressedKey));
+console.log(encodeDIDfromHexString(multicodecName,compressedKey));
 ```
 
 ### output
@@ -86,15 +85,15 @@ did:key:z2J9gaYmUxgiF1VDutBWwC4KVdpKfjnRkyV3t4kysx49eHz1wkYh1KHBPqbNdVH5GTgY2KLX
 ### Raw 64 Byte Public Key code Example for P-256 Key:
 
 ```
-import * as name from '../did-key-creator/lib/encodeDIDkey.js'
-import u8a from 'uint8arrays'
+import { encodeDIDfromHexString, encodeDIDfromBytes } from 'did-key-creator'
+import { fromString } from 'uint8arrays/from-string'
 
 const multicodecName = 'p256-pub';
 const publicKeyHex = 'f9c36f8964623378bdc068d4bce07ed17c8fa486f9ac0c2613ca3c8c306d7bb61cd36717b8ac5e4fea8ad23dc8d0783c2318ee4ad7a80db6e0026ad0b072a24f';
-const publicKey = u8a.fromString(publicKeyHex,'base16');
+const publicKey = fromString(publicKeyHex,'base16');
 
-console.log(name.encodeDIDfromHexString(multicodecName,publicKeyHex));
-console.log(name.encodeDIDfromBytes(multicodecName,publicKey));
+console.log(encodeDIDfromHexString(multicodecName,publicKeyHex));
+console.log(encodeDIDfromBytes(multicodecName,publicKey));
 
 ```
 
@@ -106,21 +105,20 @@ did:key:zruuPojWkzGPb8sVc42f2YxcTXKUTpAUbdrzVovaTBmGGNyK6cGFaA4Kp7SSLKecrxYz8Sc9
 
 ### Raw 64 Byte Public Key code Example  for P-256 key (using elliptic npm module):
 ```
-import * as name from '../did-key-creator/lib/encodeDIDkey.js'
-import * as utils from '../did-key-creator/lib/utils.js'
-import u8a from 'uint8arrays'
-import ec from 'elliptic'
-var EC = ec.ec;
+import { rawKeyInHexfromUncompressed, compressedKeyInHexfromRaw, encodeDIDfromHexString, encodeDIDfromBytes } from 'did-key-creator'
+import { fromString } from 'uint8arrays/from-string'
+import elliptic from 'elliptic'
 
-const  ecurve = new EC('p256');
+const ecurve = new elliptic.ec('p256')
 const  key = ecurve.genKeyPair();
 const  pubPoint = key.getPublic('hex');
+const multicodecName = 'p256-pub';
 
-const rawKey = utils.rawKeyInHexfromUncompressed(pubPoint);
+const rawKey = rawKeyInHexfromUncompressed(pubPoint);
 
-const publicKey2 = u8a.fromString(rawKey,'base16');
-console.log(name.encodeDIDfromHexString(multicodecName,rawKey));
-console.log(name.encodeDIDfromBytes(multicodecName,publicKey2));
+const publicKey2 = fromString(rawKey,'base16');
+console.log(encodeDIDfromHexString(multicodecName,rawKey));
+console.log(encodeDIDfromBytes(multicodecName,publicKey2));
 ```
 
 ### output
@@ -131,19 +129,18 @@ did:key:zruqvMb8L2VWcghzg2Bt9QYwHnDfwixx9gKKU6Sy4pizM24cB98kFKefB8S7jYNvzyUFT5aR
 
 ### Uncompressed 65 Byte Key code example for P-256 key (using elliptic npm module):
 ```
-import * as name from '../did-key-creator/lib/encodeDIDkey.js'
-import * as utils from '../did-key-creator/lib/utils.js'
-import u8a from 'uint8arrays'
-import ec from 'elliptic'
-var EC = ec.ec;
+import { rawKeyInHexfromUncompressed, compressedKeyInHexfromRaw, encodeDIDfromHexString, encodeDIDfromBytes } from 'did-key-creator'
+import { fromString } from 'uint8arrays/from-string'
+import elliptic from 'elliptic'
 
-const  ecurve = new EC('p256');
+const ecurve = new elliptic.ec('p256')
 const  key = ecurve.genKeyPair();
 const  pubPoint = key.getPublic('hex');
+const multicodecName = 'p256-pub'
 
-const publicKey3 = u8a.fromString(pubPoint,'base16');
-console.log(name.encodeDIDfromHexString(multicodecName,pubPoint));
-console.log(name.encodeDIDfromBytes(multicodecName,publicKey3));
+const publicKey3 = fromString(pubPoint,'base16');
+console.log(encodeDIDfromHexString(multicodecName,pubPoint));
+console.log(encodeDIDfromBytes(multicodecName,publicKey3));
 
 ```
 
