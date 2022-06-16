@@ -1,5 +1,5 @@
 # did:key creator
-Still work in progress.
+This is a library for converting public keys to the did:key format
 
 ## Reference
 This has been tested to create did:keys from the P-256 curve like in https://github.com/w3c-ccg/did-method-key
