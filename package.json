@@ -1,8 +1,12 @@
 {
-  "version" : "0.1.4",
+  "name": "did-key-creator",
+  "version" : "0.1.5",
+  "desciption" : "This is a library for converting public keys to the the did:key format",
+  "type" : "module",
+  "source" : "src/index.ts",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
   "license": "(Apache-2.0 OR MIT)",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -19,19 +23,7 @@
     "lint": "./node_modules/.bin/eslint ./src --ext .js,.jsx,.ts,.tsx",
     "clean": "rm -rf ./lib"
   },
-  "name": "did-key-creator",
-  "author": "Brent Shambaugh",
-  "module": "dist/did-key-creator.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/did-key-creator.cjs.production.min.js",
-      "limit": "170 KB"
-    },
-    {
-      "path": "dist/did-key-creator.esm.js",
-      "limit": "170 KB"
-    }
-  ],
+  "author": "Brent Shambaugh <brent.shambaugh@gmail.com>",
   "devDependencies": {
     "@size-limit/preset-small-lib": "^4.10.1",
     "@types/elliptic": "^6.4.12",
