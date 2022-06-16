@@ -1,13 +1,13 @@
 {
   "name": "did-key-creator",
-  "version" : "0.1.6",
+  "version" : "0.1.7",
   "desciption" : "This is a library for converting public keys to the the did:key format",
   "source" : "src/index.ts",
   "typings": "lib/index.d.ts",
   "main": "lib/index.js",
   "license": "(Apache-2.0 OR MIT)",
   "files": [
-    "dist",
+    "lib",
     "src"
   ],
   "engines": {
@@ -21,6 +21,10 @@
     "prebuild": "npm run clean",
     "lint": "./node_modules/.bin/eslint ./src --ext .js,.jsx,.ts,.tsx",
     "clean": "rm -rf ./lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bshambaugh/did-key-creator.git"
   },
   "author": "Brent Shambaugh <brent.shambaugh@gmail.com>",
   "devDependencies": {
