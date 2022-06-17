@@ -5,6 +5,7 @@
   "source" : "src/index.ts",
   "typings": "lib/index.d.ts",
   "main": "lib/index.js",
+  "moduleResolution": "node",
   "license": "(Apache-2.0 OR MIT)",
   "files": [
     "lib",
