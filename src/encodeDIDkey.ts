@@ -20,7 +20,7 @@ export function encodeDIDfromHexString(multicodecName: CodecName,publicKeyHex: s
 }
 
 /**
- *  Encodes a did:key from a hex string
+ *  Encodes a did:key from bytes
  *
  *  @example
  *  eencodeDIDfromBytes('p256-pub',new Uint8Array([...])) , or see index.test.ts for constructing Uint8Arrays from strings
