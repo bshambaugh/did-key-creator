@@ -2,8 +2,10 @@
 This is a library for converting public keys to the did:key format
 
 ## Reference
-This has been tested to create did:keys from the P-256,P-384, and P-521 curves like in https://github.com/w3c-ccg/did-method-key
+This has been tested to create did:keys from the P-256,P-384, and P-521 curves specified in https://github.com/w3c-ccg/did-method-key
 and https://w3c-ccg.github.io/did-method-key/ .
+For other cryptographic curves, follow a similar pattern by feeding the correct multicodecName and corresponding public key, and
+check it against the specification. multicodeNames can be found here: https://github.com/multiformats/multicodec/blob/master/table.csv .
 
 ## Standard Use: 
 
