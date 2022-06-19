@@ -4,8 +4,10 @@ This is a library for converting public keys to the did:key format
 ## Reference
 This has been tested to create did:keys from the P-256,P-384, and P-521 curves specified in https://github.com/w3c-ccg/did-method-key
 and https://w3c-ccg.github.io/did-method-key/ .
-For other cryptographic curves, follow a similar pattern by feeding the correct multicodecName and corresponding public key, and
-check it against the specification. multicodeNames can be found here: https://github.com/multiformats/multicodec/blob/master/table.csv .
+
+For other cryptographic curves, follow a similar pattern by feeding the correct multicodecName and corresponding public key, and check the result (or form) of creating a did:key against the test vectors in the specification. Try reverting the did:key to get the original public key. The encodeDIDfromBytes function in the library should be the most generic. Public keys that create did:keys should revert to the same public keys. The did_key_utils functions provided may or may not work with the desired key. Since did:keys are specified to involve compressed public keys, a decompresion function will be needed to get the key back into a raw or uncompressed form if that allows for the best comparisons or use based on the output or desired imputs of the utilized cryptographic library, etc. At least the raw form (just the x,y bytes) and the uncompressed form with a '04' prefix concatented to the x,y bytes was appropriate for the NIST (P-*) curves. If it looks different for different curves, this is to be determined. Of course when comparing the conmpressed to raw form for NIST, look at them serialized as a hex string with x,y points as big endian. Decompression functions for NIST expressed as a ECDecompress function can be found in the key-did-resolver npm package github src folder for secp256r1, secp384r1, and secp521r1 (https://github.com/ceramicnetwork/js-ceramic/). multicodecNames can be found here: https://github.com/multiformats/multicodec/blob/master/table.csv .
+
+This code is available as the did-key-creator package on npm.
 
 ## Standard Use: 
 
