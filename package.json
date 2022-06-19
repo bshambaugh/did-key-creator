@@ -1,11 +1,10 @@
 {
   "name": "did-key-creator",
-  "version" : "0.2.6",
+  "version" : "0.2.7",
   "desciption" : "This is a library for converting public keys to the did:key format",
   "source" : "src/index.ts",
   "typings": "lib/index.d.ts",
   "main": "lib/index.js",
-  "moduleResolution": "node",
   "license": "(Apache-2.0 OR MIT)",
   "files": [
     "lib",
