@@ -84,7 +84,7 @@ console.log(encodeDIDfromHexString(multicodecName,compressedKey));
 did:key:z2J9gaYmUxgiF1VDutBWwC4KVdpKfjnRkyV3t4kysx49eHz1wkYh1KHBPqbNdVH5GTgY2KLXtJPYTwFDkhQxuTWxK3K5HSKu
 ```
 
-## Other Possible Uses:
+## Other Possible Uses (non-standard and will hurt interoperability):
 
 ### Raw 64 Byte Public Key code Example for P-256 Key:
 
