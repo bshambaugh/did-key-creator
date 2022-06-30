@@ -15,8 +15,8 @@
   },
   "scripts": {
     "test": "jest --silent",
-    "build": "tsc -p tsconfig.json",
-    "start": "tsdx watch",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "tsdx watch --format cjs",
     "prepublishOnly": "npm run build",
     "prebuild": "npm run clean",
     "lint": "./node_modules/.bin/eslint ./src --ext .js,.jsx,.ts,.tsx",
