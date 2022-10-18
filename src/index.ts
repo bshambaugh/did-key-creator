@@ -1,20 +1,20 @@
 import { ECPointCompress,
-  compressedKeyInHexfromRaw, 
-  uncompressedKeyInHexfromRaw, 
-  rawKeyInHexfromUncompressed, 
-  pubKeyHexToUint8Array, 
-  didKeyIDtoPubKeyHex, 
-  didKeyURLtoPubKeyHex } from './did_key_utils'
+  compressedKeyInHexfromRaw,
+  uncompressedKeyInHexfromRaw,
+  rawKeyInHexfromUncompressed,
+  pubKeyHexToUint8Array,
+  didKeyIDtoPubKeyHex,
+  didKeyURLtoPubKeyHex } from './did_key_utils.js'
 
-import { encodeDIDfromHexString, encodeDIDfromBytes } from './encodeDIDkey'
+import { encodeDIDfromHexString, encodeDIDfromBytes } from './encodeDIDkey.js'
 
 export { ECPointCompress,
-         compressedKeyInHexfromRaw, 
-         uncompressedKeyInHexfromRaw, 
-         rawKeyInHexfromUncompressed, 
-         pubKeyHexToUint8Array, 
-         didKeyIDtoPubKeyHex, 
+         compressedKeyInHexfromRaw,
+         uncompressedKeyInHexfromRaw,
+         rawKeyInHexfromUncompressed,
+         pubKeyHexToUint8Array,
+         didKeyIDtoPubKeyHex,
          didKeyURLtoPubKeyHex,
-         encodeDIDfromHexString, 
+         encodeDIDfromHexString,
          encodeDIDfromBytes
-       } 
+       }

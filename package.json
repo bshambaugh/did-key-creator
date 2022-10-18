@@ -1,20 +1,26 @@
 {
   "name": "did-key-creator",
-  "version" : "0.3.2",
-  "desciption" : "This is a library for converting public keys to the did:key format",
-  "source" : "src/index.ts",
+  "version": "0.3.2",
+  "desciption": "This is a library for converting public keys to the did:key format",
+  "source": "src/index.ts",
   "typings": "lib/index.d.ts",
-  "main": "lib/index.js",
+  "type": "module",
   "license": "(Apache-2.0 OR MIT)",
   "files": [
     "lib",
     "src"
   ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    }
+  },
   "engines": {
     "node": ">=12"
   },
   "scripts": {
-    "test": "jest --silent",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "build": "tsc -p tsconfig.json",
     "start": "tsdx watch",
     "prepublishOnly": "npm run build",
@@ -28,21 +34,23 @@
   },
   "author": "Brent Shambaugh <brent.shambaugh@gmail.com>",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-typescript": "^7.13.0",
     "@size-limit/preset-small-lib": "^4.10.1",
     "@types/elliptic": "^6.4.12",
+    "@types/jest": "^29.1.2",
     "eslint": "^7.21.0",
     "eslint-config-3box": "^0.2.0",
     "husky": "^4.3.8",
+    "jest": "^29.2.0",
     "prettier": "^2.2.1",
     "size-limit": "^4.10.1",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.1.0",
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "multiformats": "^9.6.5",
     "multicodec": "^3.0.1",
-    "ts-jest": "^28.0.5",
-    "uint8arrays": "^2.1.4"
+    "multiformats": "^10.0.1",
+    "uint8arrays": "^4.0.2"
   }
 }
