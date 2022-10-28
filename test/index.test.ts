@@ -1,7 +1,7 @@
 import * as u8a from 'uint8arrays'
 
-import { encodeDIDfromHexString, encodeDIDfromBytes } from '../src/encodeDIDkey'
-import { compressedKeyInHexfromRaw, ECPointCompress, uncompressedKeyInHexfromRaw, rawKeyInHexfromUncompressed, pubKeyHexToUint8Array, didKeyIDtoPubKeyHex, didKeyURLtoPubKeyHex } from '../src/did_key_utils'
+import { encodeDIDfromHexString, encodeDIDfromBytes } from '../src/encodeDIDkey.js'
+import { compressedKeyInHexfromRaw, ECPointCompress, uncompressedKeyInHexfromRaw, rawKeyInHexfromUncompressed, pubKeyHexToUint8Array, didKeyIDtoPubKeyHex, didKeyURLtoPubKeyHex } from '../src/did_key_utils.js'
 
 describe('did-key-creator-p256', () => {
   test('encodeDIDfromBytes', () => {
