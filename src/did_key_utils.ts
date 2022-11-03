@@ -1,6 +1,6 @@
-import * as u8a from 'uint8arrays'
-import multicodec from 'multicodec'
-import { base58btc } from 'multiformats/bases/base58'
+import * as u8a from "uint8arrays";
+import multicodec from "multicodec";
+import { base58btc } from "multiformats/bases/base58";
 
 /**
  *  compress a public key with points x,y expressed as UintArrays
@@ -11,12 +11,12 @@ import { base58btc } from 'multiformats/bases/base58'
  *  @return {Uint8Array} compressed form of public key as Uint8Array
  */
 export function ECPointCompress(x: Uint8Array, y: Uint8Array): Uint8Array {
-  const out = new Uint8Array(x.length + 1)
+  const out = new Uint8Array(x.length + 1);
 
-  out[0] = 2 + (y[y.length - 1] & 1)
-  out.set(x, 1)
+  out[0] = 2 + (y[y.length - 1] & 1);
+  out.set(x, 1);
 
-  return out
+  return out;
 }
 
 /**
@@ -29,15 +29,15 @@ export function ECPointCompress(x: Uint8Array, y: Uint8Array): Uint8Array {
  *  @return {string} compressed key as hex string with '02' prefix for even and '03' prefix for odd y point value
  */
 export function compressedKeyInHexfromRaw(publicKeyHex: string): string {
-  const xHex = publicKeyHex.slice(0, publicKeyHex.length / 2)
-  const yHex = publicKeyHex.slice(publicKeyHex.length / 2, publicKeyHex.length)
+  const xHex = publicKeyHex.slice(0, publicKeyHex.length / 2);
+  const yHex = publicKeyHex.slice(publicKeyHex.length / 2, publicKeyHex.length);
 
-  const xOctet = u8a.fromString(xHex, 'base16')
-  const yOctet = u8a.fromString(yHex, 'base16')
+  const xOctet = u8a.fromString(xHex, "base16");
+  const yOctet = u8a.fromString(yHex, "base16");
 
-  const compressedPoint = ECPointCompress(xOctet, yOctet)
-  const compressedPointHex = u8a.toString(compressedPoint, 'base16')
-  return compressedPointHex
+  const compressedPoint = ECPointCompress(xOctet, yOctet);
+  const compressedPointHex = u8a.toString(compressedPoint, "base16");
+  return compressedPointHex;
 }
 
 /**
@@ -50,7 +50,7 @@ export function compressedKeyInHexfromRaw(publicKeyHex: string): string {
  *  @return {string} uncompressed key with x and y points and '04' prefix
  */
 export function uncompressedKeyInHexfromRaw(publicKeyHex: string): string {
-  return '04' + publicKeyHex
+  return "04" + publicKeyHex;
 }
 
 /**
@@ -63,7 +63,7 @@ export function uncompressedKeyInHexfromRaw(publicKeyHex: string): string {
  *  @return {string} raw key with x and y points and no '04' prefix
  */
 export function rawKeyInHexfromUncompressed(publicKeyHex: string): string {
-  return publicKeyHex.slice(2)
+  return publicKeyHex.slice(2);
 }
 
 /**
@@ -77,12 +77,12 @@ export function rawKeyInHexfromUncompressed(publicKeyHex: string): string {
  */
 export function pubKeyHexToUint8Array(publicKeyHex: string): Uint8Array {
   if (publicKeyHex == null) {
-    throw new TypeError('input cannot be null or undefined.')
+    throw new TypeError("input cannot be null or undefined.");
   }
   if (publicKeyHex.length % 2 === 0) {
-    return u8a.fromString(publicKeyHex, 'base16')
+    return u8a.fromString(publicKeyHex, "base16");
   } else {
-    return u8a.fromString('0' + publicKeyHex, 'base16')
+    return u8a.fromString("0" + publicKeyHex, "base16");
   }
 }
 
@@ -96,9 +96,9 @@ export function pubKeyHexToUint8Array(publicKeyHex: string): Uint8Array {
  *  @return {string} raw public key with x and y points and no '04' prefix
  */
 export function didKeyIDtoPubKeyHex(didKeyID: string): string {
-  const buf = base58btc.decode(didKeyID)
-  const bufwoPrefix = multicodec.rmPrefix(buf)
-  return u8a.toString(bufwoPrefix, 'base16')
+  const buf = base58btc.decode(didKeyID);
+  const bufwoPrefix = multicodec.rmPrefix(buf);
+  return u8a.toString(bufwoPrefix, "base16");
 }
 
 /**
@@ -111,6 +111,6 @@ export function didKeyIDtoPubKeyHex(didKeyID: string): string {
  *   @return {string} raw public key with x and y points and no '04' prefix
  */
 export function didKeyURLtoPubKeyHex(didKeyURL: string): string {
-  const didKeyID = didKeyURL.split(':')[2]
-  return didKeyIDtoPubKeyHex(didKeyID)
+  const didKeyID = didKeyURL.split(":")[2];
+  return didKeyIDtoPubKeyHex(didKeyID);
 }

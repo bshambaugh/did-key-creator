@@ -1,7 +1,7 @@
-import * as u8a from 'uint8arrays'
-import multicodec from 'multicodec'
-import { base58btc } from 'multiformats/bases/base58'
-import { CodecName } from 'multicodec/src/generated-types'
+import * as u8a from "uint8arrays";
+import multicodec from "multicodec";
+import { base58btc } from "multiformats/bases/base58";
+import { CodecName } from "multicodec/src/generated-types";
 
 /**
  *  Encodes a did:key from a hex string
@@ -13,10 +13,13 @@ import { CodecName } from 'multicodec/src/generated-types'
  *  @param    {string}              publicKeyHex     public key expressed as hex string
  *  @return   {string}                               a did:key, see spec https://w3c-ccg.github.io/did-method-key/ for form
  */
-export function encodeDIDfromHexString(multicodecName: CodecName, publicKeyHex: string): string {
-  const publicKey = u8a.fromString(publicKeyHex, 'base16')
-  const didKey = encodeDIDfromBytes(multicodecName, publicKey)
-  return didKey
+export function encodeDIDfromHexString(
+  multicodecName: CodecName,
+  publicKeyHex: string
+): string {
+  const publicKey = u8a.fromString(publicKeyHex, "base16");
+  const didKey = encodeDIDfromBytes(multicodecName, publicKey);
+  return didKey;
 }
 
 /**
@@ -29,8 +32,11 @@ export function encodeDIDfromHexString(multicodecName: CodecName, publicKeyHex: 
  *  @param    {Uint8Array}              publicKey    public key expressed as byte Array
  *  @return   {string}                               a did:key, see spec https://w3c-ccg.github.io/did-method-key/ for form
  */
-export function encodeDIDfromBytes(multicodecName: CodecName, publicKey: Uint8Array): string {
-  const publicKeywPrefix = multicodec.addPrefix(multicodecName, publicKey)
-  const bufAsString = base58btc.encode(publicKeywPrefix)
-  return `did:key:${bufAsString}`
+export function encodeDIDfromBytes(
+  multicodecName: CodecName,
+  publicKey: Uint8Array
+): string {
+  const publicKeywPrefix = multicodec.addPrefix(multicodecName, publicKey);
+  const bufAsString = base58btc.encode(publicKeywPrefix);
+  return `did:key:${bufAsString}`;
 }
