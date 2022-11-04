@@ -1,6 +1,6 @@
 {
   "name": "did-key-creator",
-  "version" : "1.0.0",
+  "version" : "1.2.0",
   "desciption" : "This is a library for converting public keys to the did:key format",
   "author": "Brent Shambaugh <brent.shambaugh@gmail.com>",
   "license": "(Apache-2.0 OR MIT)",
@@ -21,7 +21,7 @@
   },
   "sideEffects": false,
   "scripts": {
-    "test": "jest --silent",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "build": "tsc -p tsconfig.build.json",
     "start": "tsdx watch",
     "prepublishOnly": "npm run build",

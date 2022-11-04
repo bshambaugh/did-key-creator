@@ -1,6 +1,11 @@
 # did:key creator
 This is a library for converting public keys to the did:key format
 
+## Installation
+```
+$ npm install did-key-creator
+```
+
 ## Reference
 This has been tested to create did:keys from the P-256,P-384, and P-521 curves specified in https://github.com/w3c-ccg/did-method-key
 and https://w3c-ccg.github.io/did-method-key/ .
